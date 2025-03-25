@@ -22,7 +22,7 @@ const (
 
 var (
     numThreads = runtime.NumCPU()
-    DIFF = big.NewInt(3966)
+    DIFF = big.NewInt(128)
 )
 
 // Generate Bitcoin address from private key
@@ -70,14 +70,12 @@ func scanDiff(basenum *big.Int) {
             os.Exit(0)
 		}
 
-        fmt.Printf("%s {::} %s\n", current.Text(16), address);
-
 		current.Add(current, one)
 	}
 }
 
 func saveToFile(key string) {
-    f, err := os.OpenFile("/home/chloro/me/prog/go/1kpuzzle/found_key.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+    f, err := os.OpenFile("./found_key.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
     if err != nil {
          fmt.Println("Error opening file:", err)
          return
